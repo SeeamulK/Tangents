@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const pageTitle = "About Tangents";
 const identity = {
     firstName: "Seeamul",
@@ -9,20 +11,44 @@ const identity = {
 }
 
 const skills = ["HTML", "CSS", "C", "C#", "Python", "JavaScript", "Video Editing", "Photo Editing", "Fine Art", "Graphic Design", "Cooking"]
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width"/>
         <title>{pageTitle}</title>
-      </head>
+        <style define:vars={{skillColor, fontWeight, textCase} }>
+            h1 {
+                color: greenyellow;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
+    </head>
     <body>
         <a href="/">Home</a>
         <a href="/blog">Blog</a>
-        <h1>What is Tangents?</h1>
+        <h1>About Me</h1>
         <p> 
-            Tangents is a share my thoughts and ideas, explore interesting topics, and document all the projects I will be working on.</br>
-            
+            My name is {identity.firstName} and I am learning asto to build my personal
+            {happy && <p>I am happy to be learning Astro!</p>}
+            {finished && <p>I finished this tutorial!</p>}
+            {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+            <p>My Skills are:</p>
+            <ul>
+                {skills.map((skill) => <li class="skill">{skill}</li>)}
+            </ul>
         </p>
     </body>
 </html>
