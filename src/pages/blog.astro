@@ -1,23 +1,15 @@
 ---
-import '../styles/global.css';
-import Navigation from '../components/Navigation.astro';
-const pageTitle = "Da Blog";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Da Blog"
 ---
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width"/>
-        <title>{pageTitle}</title>
-    </head>
-    <body>
-        <Navigation />
-      
-        <h1>{pageTitle}</h1>
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{pageTitle}</h1>
         <p>This is where I will post my blog posts.</p>
         <ul>
             <li><a href="/posts/post-1/">Post 1</a></li>
             <li><a href="/posts/post-2/">Post 2</a></li>
             <li><a href="/posts/post-3/">Post 3</a></li>
         </ul>
-      </body>
-</html>
+</BaseLayout>
