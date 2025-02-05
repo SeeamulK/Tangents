@@ -1,21 +1,13 @@
 ---
 const pageTitle = "Tangents";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-	<img src="/File_000.png" alt="Tangents Logo" />
-	<h2>Trying out layouts</h2>
-	<p> 
-		This is the first test version of the Tangents website. It is built with Astro. It is a work in progress.
+<BaseLayout pageTitle={pageTitle}>
+	<img src="/File_000.png" alt="Tangents Logo" />	
+	<p>
+		This is the first test version of the Tangents website. It is built with Astro.
 		<br>
 		<br>
-		This is a test version and the website is not yet complete.
+		This is a test version and the website is not yet complete. 
 	</p>
 </BaseLayout>
