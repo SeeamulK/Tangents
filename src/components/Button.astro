@@ -1,0 +1,12 @@
+---
+interface Props {
+  class?: string;
+  style?: string;
+  onclick?: string;
+}
+
+const { class: className, style, onclick } = Astro.props;
+---
+<button class={className} style={style} onclick={onclick}>
+  <slot />
+</button> 

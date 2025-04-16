@@ -1,3 +1,8 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './fonts.css';
+
 html {
     background-color: "white";
     font-family: sans-serif;
@@ -9,6 +14,9 @@ html {
     max-width: 80ch;
     padding: 1rem;
     line-height: 1.5;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(0);
   }
   
   * {
@@ -79,5 +87,65 @@ html {
   .hamburger {
     display: none;
   }
+}
 
+/* Page Transition Styles */
+.page-transition-out {
+  opacity: 0;
+}
+
+/* Direction-based transitions */
+body[data-transition-direction="up"].page-transition-out {
+  transform: translateY(-50px);
+}
+
+body[data-transition-direction="down"].page-transition-out {
+  transform: translateY(50px);
+}
+
+.page-transition-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+body[data-transition-direction="up"].page-transition-in {
+  transform: translateY(50px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+body[data-transition-direction="down"].page-transition-in {
+  transform: translateY(-50px);
+  animation: fadeInDown 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
 }

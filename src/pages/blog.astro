@@ -7,9 +7,18 @@ const pageTitle = "Da Blog"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1>{pageTitle}</h1>
-  <p>This is where I will post my blog posts.</p>
-  <ul>
-    {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
-  </ul>
+  <div class="page-content">
+    <h1>{pageTitle}</h1>
+    <p>This is where I will post my blog posts.</p>
+    <ul>
+      {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    </ul>
+
+  <style>
+    .page-content {
+      min-height: 80vh;
+      position: relative;
+      padding-top: 50px;
+    }
+  </style>
 </BaseLayout>

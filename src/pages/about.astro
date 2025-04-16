@@ -21,26 +21,34 @@ const textCase = "uppercase";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <style define:vars={{skillColor, fontWeight, textCase}}>
-        h1 {
-            color: red;
-            font-size: 4rem;
-        }
-        .skill {
-            color: var(--skillColor);
-            font-weight: var(--fontWeight);
-            text-transform: var(--textCase);
+    <div class="page-content">
+        <style define:vars={{skillColor, fontWeight, textCase}}>
+            h1 {
+                color: red;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
+        <h1>About Me</h1>
+        <p> 
+            My name is {identity.firstName} and I am learning Astro to build my personal website.
+            {happy && <p>I am happy to be learning Astro!</p>}
+            {finished && <p>I finished this tutorial!</p>}
+            {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+            <p>My Skills are:</p>
+            <ul>
+                {skills.map((skill) => <li class="skill">{skill}</li>)}
+            </ul>
+        </p>
+    <style>
+        .page-content {
+            min-height: 80vh;
+            position: relative;
+            padding-bottom: 50px;
         }
     </style>
-    <h1>About Me</h1>
-    <p> 
-        My name is {identity.firstName} and I am learning Astro to build my personal website.
-        {happy && <p>I am happy to be learning Astro!</p>}
-        {finished && <p>I finished this tutorial!</p>}
-        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-        <p>My Skills are:</p>
-        <ul>
-            {skills.map((skill) => <li class="skill">{skill}</li>)}
-        </ul>
-    </p>
 </BaseLayout>
