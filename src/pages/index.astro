@@ -1,6 +1,6 @@
 ---
 const pageTitle = "Tangents";
-import Button from '../components/Button.astro';
+import { ClientRouter } from 'astro:transitions';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -8,9 +8,10 @@ import Button from '../components/Button.astro';
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{pageTitle}</title>
+        <ClientRouter/>
         <style>
             .logo {
-                width: 75%;
+                width: 50%;
                 height: auto;
                 position: absolute;
                 top: 50%;
@@ -19,14 +20,21 @@ import Button from '../components/Button.astro';
                 object-position: center;
             }
             body {
-                background-color: #e0f39d;
+                background-color: #fcf9db;
+            }
+            
+            .button-link {
+                display: inline-block;
+                text-decoration: none;
+                color: inherit;
+                cursor: pointer;
             }
 
         </style>
     </head>
     <body>
-        <img src="/Tangents Logo (release) v1.0.svg" alt="Tangents Logo Version 1.0" class="logo">
-        <Button class="fixed bottom-5 right-5 text-5xl p-4 hover:bg-[#b1cc4f] rounded-lg" style="font-family: 'Faculty Glyphic', sans-serif;" onclick="window.location.href='/blog'">BLOG</Button>
-        <Button class="fixed top-5 right-5 text-5xl p-4 hover:bg-[#b1cc4f] rounded-lg" style="font-family: 'Faculty Glyphic', sans-serif;" onclick="window.location.href='/about'">Portfolio</Button>
+        <img src="/Tangents Logo (release) v1.0.svg" alt="Tangents Logo Version 1.0" class="logo" transition:name="tangents-logo">
+        <a href="/blog" class="button-link fixed bottom-5 right-5 text-5xl p-4 hover:bg-[#b1cc4f] rounded-lg" style="font-family: 'Faculty Glyphic', sans-serif;">BLOG</a>
+        <a href="/about" class="button-link fixed top-5 right-5 text-5xl p-4 hover:bg-[#b1cc4f] rounded-lg" style="font-family: 'Faculty Glyphic', sans-serif;">Portfolio</a>
     </body>
 </html>

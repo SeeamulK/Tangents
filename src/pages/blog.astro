@@ -1,24 +1,28 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
-
-const allPosts = Object.values(import.meta.glob('./posts/*.md', {eager: true}));
-const pageTitle = "Da Blog"
+import { ClientRouter } from 'astro:transitions';
+import BlogPost from '../components/BlogPost.astro';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <div class="page-content">
-    <h1>{pageTitle}</h1>
-    <p>This is where I will post my blog posts.</p>
-    <ul>
-      {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
-    </ul>
+<html>
+  <head>
+    <title>Blog</title>
+    <ClientRouter/>
+    <style>
+      .logo {
+        width: 300px;
+        height: auto;
+        padding-top: 10px;
 
-  <style>
-    .page-content {
-      min-height: 80vh;
-      position: relative;
-      padding-top: 50px;
-    }
-  </style>
-</BaseLayout>
+      }
+      body {
+        background-color: #f9f3e4;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="/Tangents Logo (release) v1.0.svg" alt="Tangents Logo Version 1.0" class="logo" transition:name="tangents-logo">
+    <hr style="border: 2px solid black; margin: 20px 0;">
+    <p>This is where I will post my blog posts.</p>
+    <BlogPost url="/src/pages/Blogposts/Making Tangents.md" title="Making Tangents"/>
+  </body>
+</html>
